@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-	<link rel="shortcut icon"  href="/imagen/icono.png">
+	<link rel="shortcut icon"  href="/imagen/paso3.png">
 	<title>PROYECTO SA</title>
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -187,6 +187,18 @@ display: inline-block;
     </div>
     <input type="text" id="tel" class="form-control" placeholder="3157876185" aria-label="Username" aria-describedby="basic-addon1">
   </div>
+  <h6>Tipo de Usuario:</h6>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      
+      <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+    </div>
+      <select id="tipoUsuario" class="form-control">
+        <option selected value="1">Cliente</option>
+        <option value="1">Proveedor</option>
+      </select>
+   
+  </div>
   <h6>Password</h6>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
@@ -198,6 +210,7 @@ display: inline-block;
    
   </div>
    <h6 id="min">Mínimo 6 Caracteres</h6>
+   
         </div>
         <div id="boton" class="modal-footer text-left">
           
