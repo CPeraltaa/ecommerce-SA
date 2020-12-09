@@ -1,0 +1,142 @@
+<div class="container col-12">
+   <div class="row">
+    <div class="listado col-12">
+      <h1 id="list">Listado de Obsequios</h1>
+    </div>
+    <br>
+    <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center"><img id="img_obs" src="/imagen/alcanciabuena.png"></h5>
+        <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
+        Incluye: $50.000</p>
+        <p class="collapse" id="collapseExample">
+    Ver mas Respecto a este Articulo
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+        <p class="card-text text-right">
+        <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
+        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
+      </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center"><img id="img_obs" src="/imagen/cine.jpg"></h5>
+        <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
+        Incluye: $50.000</p>
+        <p class="collapse" id="collapseExample2">
+    Ver mas Respecto a este Articulo
+  </p>
+        <p class="card-text text-right">
+        <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
+        <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample"   href="#" class="btn bt-success">Más >></a>
+      </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center"><img id="img_obs" src="/imagen/cereales.jpg"></h5>
+        <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
+        Incluye: $50.000</p>
+        <p class="collapse" id="collapseExample3">
+    Ver mas Respecto a este Articulo
+  </p>
+        <p class="card-text text-right">
+        <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
+        <a data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
+      </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card ">
+      <div class="card-body">
+        <h5 class="card-title text-center"><img id="img_obs" src="/imagen/123.jpg"></h5>
+        <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
+        Incluye: $50.000</p>
+       <p class="collapse" id="collapseExample4">
+    Ver mas Respecto a este Articulo
+  </p>
+        <p class="card-text text-right">
+        <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
+        <a data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
+      </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center"><img id="img_obs" src="/imagen/bobina.jpg"></h5>
+        <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
+        Incluye: $50.000</p>
+   <p class="collapse" id="collapseExample5">
+    Ver mas Respecto a este Articulo
+  </p>
+        <p class="card-text text-right">
+        <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
+        <a data-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
+      </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center"><img id="img_obs" src="/imagen/1000.png"></h5>
+        <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
+        Incluye: $50.000</p>
+        <p class="collapse" id="collapseExample6">
+    Ver mas Respecto a este Articulo
+  </p>
+        <p class="card-text text-right">
+        <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
+        <a data-toggle="collapse" href="#collapseExample6" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
+      </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center"><img id="img_obs" src="/imagen/500.png"></h5>
+        <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
+        Incluye: $50.000</p>
+        <p class="collapse" id="collapseExample7">
+    Ver mas Respecto a este Articulo
+  </p>
+        <p class="card-text text-right">
+        <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
+        <a data-toggle="collapse" href="#collapseExample7" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
+      </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card ">
+      <div class="card-body">
+        <h5 class="card-title text-center"><img id="img_obs" src="/imagen/canino.jpg"></h5>
+        <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
+        Incluye: $50.000</p>
+        <p class="collapse" id="collapseExample8">
+    Ver mas Respecto a este Articulo
+  </p>
+        <p class="card-text text-right">
+        <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
+        <a data-toggle="collapse" href="#collapseExample8" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
+      </p>
+      </div>
+    </div>
+  </div>
+   </div>
+ </div>

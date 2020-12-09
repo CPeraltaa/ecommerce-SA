@@ -1,0 +1,35 @@
+<div class="modal fade col-12" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content col-12">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalles del Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body col-12" id="cuerpo">
+        <div class="col-sm-6">
+          <img id="img_detalle" src="/imagen/alcanciabuena.png">
+        </div>
+        <div class="col-sm-6 text-left">
+         <p>
+          <i class="icon fa fa-check-square-o"></i>Nombre: Desayuno Sorpresa<br>
+           <i class="icon fa fa-check-square-o"></i>Espectacular Detalle, Incluye:<br>
+           <i class="icon fa fa-check-square-o"></i>Delicioso Cupcake decorado<br>
+           <i class="icon fa fa-check-square-o"></i>Sandwich de Jamón y Queso Importada 710ml<br>
+           <i class=" icon fa fa-check-square-o"></i>Vaso en Cristal con Sticker<br>
+           <i class="icon fa fa-check-square-o"></i>Caja decorativa<br>
+           <i class="icon fa fa-check-square-o"></i>Combas<br>
+           <i class="icon fa fa-check-square-o"></i>Tarjeta personalizada<br>
+           Valor: 50000<br>
+         </p>
+        </div>
+ 
+      </div>
+      <div id="boton" class="modal-footer text-left">
+        <input type="submit" value="Volver" id="añadir al Carrito" class="btn btn-primary" data-dismiss="modal" />
+        <input type="submit" value="Añadri al Carrito" id="" class="btn btn-primary" data-dismiss="modal" />
+      </div>
+    </div>
+  </div>
+</div>
