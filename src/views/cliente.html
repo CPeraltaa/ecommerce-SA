@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+	<link rel="shortcut icon"  href="/imagen/icono.png">
+	<title>PROYECTO SA</title>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="javaScript/alertifyjs/css/themes/default.css">
+<link rel="stylesheet" type="text/css" href="javaScript/alertifyjs/css/alertify.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="javaScript/jquery-3.2.1.min.js"></script>
+<script src="javaScript/alertifyjs/alertify.js"></script>	
+<link rel="stylesheet" type="text/css" href="/css/style_index.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">ECOMMERCE SA |</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#modalHistoria" href="#">Historia</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#exampleModal2" href="#">Contacto</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+     <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#ModalLogin" href="#">Perfil</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">Cerrar Sesión</a>
+      </li>
+    </ul>
+    </form>
+  </div>
+</nav>
+ 
+<div id="content">
+    <section class="py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h1>Bienvenido @Cliente</h1>
+                    <p class="lead text-muted">
+                        Revisa los articulo más vistos hoy
+                    </p>
+                </div>
+                <div class="col-lg-3">
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="d-flex" id="wrapper">
+<!-- barra lateral de categorias -->
+<div class="bg-dark border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading text-light">Categoria de productos </div>
+    <div class="list-group list-group-flush">
+      <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Abarrotes</a>
+      <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Tecnología</a>
+      <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Ropa</a>
+      <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Jardinería</a>
+      <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Automoviles</a>
+      <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Herramientas</a>
+    </div>
+  </div>
+   
+<br>
+
+<!--**********************************************************************CONTACTO***********************************************-->
+ <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contacto de Clientes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-primary alert-dismissible fade show text-left" role="alert">
+  <strong>Info!</strong> Si tienes alguna pregunta no dudes en contactarnos. Estaremos atentos a responder cualquier inquietud que tengas.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+        <h6>Nombre Completo</h6>
+        <div class="input-group mb-3">
+
+  <div class="input-group-prepend">
+    
+    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+  </div>
+  <input type="text" id="nombre" class="form-control" placeholder="Nombres Apellidos" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+<h6>Email</h6>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    
+    <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+  </div>
+  <input type="email" id="mail" class="form-control" placeholder="Correo Electrónico" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+<h6>Mensaje</h6>
+<div class="input-group">
+
+  <textarea class="form-control" id="campo" aria-label="With textarea"></textarea>
+</div>
+
+ 
+      </div>
+      <div id="boton" class="modal-footer text-left">
+        
+        <input type="submit" value="Contactar" id="contactar" class="btn btn-primary" data-dismiss="modal" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--*************************************************************SECCIÒN DE HISTORIA*****************************************************-->
+<div class="modal fade" id="modalHistoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Historia</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <p>Nuestra empresa surgió directamente de un proyecto de la universidad a través del curso de Software Avanzado
+                    en el cual nos pidieron la implementación de una tienda en línea.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container col-12">
+    <div class="row">
+     <div class="listado col-12">
+       <h1 id="list">Listado de Obsequios</h1>
+     </div>
+     <br>
+     <div class="col-sm-3">
+     <div class="card">
+       <div class="card-body">
+         <h5 class="card-title text-center"><img id="img_obs" src="/imagen/alcanciabuena.png"></h5>
+         <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
+         Incluye: $50.000</p>
+         <p class="collapse" id="collapseExample">
+     Ver mas Respecto a este Articulo
+     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+   </p>
+         <p class="card-text text-right">
+         <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
+         <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
+       </p>
+       </div>
+     </div>
+   </div>
+   <div class="col-sm-3">
+     <div class="card">
+       <div class="card-body">
+         <h5 class="card-title text-center"><img id="img_obs" src="/imagen/cine.jpg"></h5>
+         <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
+         Incluye: $50.000</p>
+         <p class="collapse" id="collapseExample2">
+     Ver mas Respecto a este Articulo
+   </p>
+         <p class="card-text text-right">
+         <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
+         <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample"   href="#" class="btn bt-success">Más >></a>
+       </p>
+       </div>
+     </div>
+   </div>
+   <div class="col-sm-3">
+     <div class="card">
+       <div class="card-body">
+         <h5 class="card-title text-center"><img id="img_obs" src="/imagen/cereales.jpg"></h5>
+         <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
+         Incluye: $50.000</p>
+         <p class="collapse" id="collapseExample3">
+     Ver mas Respecto a este Articulo
+   </p>
+         <p class="card-text text-right">
+         <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
+         <a data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
+       </p>
+       </div>
+     </div>
+   </div>
+   <div class="col-sm-3">
+     <div class="card ">
+       <div class="card-body">
+         <h5 class="card-title text-center"><img id="img_obs" src="/imagen/123.jpg"></h5>
+         <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
+         Incluye: $50.000</p>
+        <p class="collapse" id="collapseExample4">
+     Ver mas Respecto a este Articulo
+   </p>
+         <p class="card-text text-right">
+         <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
+         <a data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
+       </p>
+       </div>
+     </div>
+   </div>
+   <div class="col-sm-3">
+     <div class="card">
+       <div class="card-body">
+         <h5 class="card-title text-center"><img id="img_obs" src="/imagen/bobina.jpg"></h5>
+         <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
+         Incluye: $50.000</p>
+    <p class="collapse" id="collapseExample5">
+     Ver mas Respecto a este Articulo
+   </p>
+         <p class="card-text text-right">
+         <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
+         <a data-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
+       </p>
+       </div>
+     </div>
+   </div>
+<!--**********************************************************************FOOTER DE PAGINA***********************************************-->
+ <footer class = "footer">
+        <div id="cont"  class = "container col-12">
+          <div class="row">
+           <div  class="col-sm-12 text-center">
+            <h2 id="titulo">¿Cómo comprar en ECOMMERCE SA?</h2>
+           </div>
+           <div class="col-sm-4 text-center">
+            <img id="img_footer" src="/imagen/paso1.png">
+            <p id="mensajito"><h5>1. Elige tu producto</h5>
+                <br>Navega dentro de las categorías de nuestros productos y elige el que necesites.
+            </p>
+           </div>
+           <div class="col-sm-4 text-center">
+             <img id="img_footer" src="/imagen/paso2.png">
+             <p id="mensajito"><h5>2. Define tu forma de pago</h5>
+                 <br>Elige si deseas pagar con tu tarjeta de crédito o débito.
+            </p>
+           </div>
+           <div class="col-sm-4 text-center">
+             <img id="img_footer" src="/imagen/paso3.png">
+             <p id="mensajito"><h5>3. Recibe tu producto</h5>
+                 <br>Nosotros te enviaremos tus productos directamente hasta la puerta de tu casa.
+            </p>
+           </div>
+         </div>
+        </div>
+    </footer>
+
+ <script src="/js/funciones_cliente.js"></script>
+</body>
+</html>
