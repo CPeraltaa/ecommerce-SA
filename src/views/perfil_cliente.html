@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <link rel="shortcut icon" href="/imagen/icono.png" />
+    <title>PROYECTO SA</title>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="javaScript/alertifyjs/css/themes/default.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="javaScript/alertifyjs/css/alertify.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="javaScript/jquery-3.2.1.min.js"></script>
+    <script src="javaScript/alertifyjs/alertify.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style_index.css" />
+    <style type="text/css">
+      body {
+        overflow-x: hidden;
+      }
+      .container {
+        background: #fff;
+        width: 740px;
+        height: 590px;
+        margin: 0 auto;
+        position: relative;
+        margin-top: 5%;
+        box-shadow: 2px 5px 2px rgba(119, 119, 119, 0.5);
+      }
+      .leftbox {
+        float: left;
+        top: -5%;
+        left: 5%;
+        position: absolute;
+        width: 15%;
+        height: 110%;
+        background: #2ed573;
+        box-shadow: 3px 3px 10pxrgba (119, 119, 119, 0.5);
+        border: 0.1em solid #fff;
+      }
+      nav a {
+        list-style: none;
+        padding: 35px;
+        color: #fff;
+        font-size: 1.1em;
+        display: block;
+        transition: all 0.3s ease-in-out;
+      }
+      nav a:hover {
+        color: #10ac84;
+        cursor: pointer;
+        transform: scale(1.4);
+      }
+      nav a:first-child {
+        margin-top: 7px;
+      }
+      nav a.active {
+        color: #10ac84;
+      }
+
+      .rightbox {
+        width: 60%;
+        margin-left: 27%;
+      }
+      .tabShow {
+        transition: all 0.5s ease-in;
+        width: 80%;
+      }
+      h1 {
+        font-size: 1.2rem;
+        margin-top: 40px;
+        margin-bottom: 35px;
+      }
+      h2 {
+        font-size: 15px;
+        letter-spacing: 1px;
+        margin-left: 2px;
+        margin-top: 10px;
+      }
+      .tabShow {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">ECOMMERCE SA |</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              data-toggle="modal"
+              data-target="#modalHistoria"
+              href="#"
+              >Historia</a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              data-toggle="modal"
+              data-target="#exampleModal2"
+              href="#"
+              >Contacto</a
+            >
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-toggle="modal"
+                data-target="#ModalLogin"
+                href="#"
+                >Perfil</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-toggle="modal"
+                data-target="#exampleModal"
+                href="#"
+                >Cerrar Sesión</a
+              >
+            </li>
+          </ul>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="leftbox">
+        <nav>
+          <a onClick="tabs(0)" class="tab active">
+            <i class="fa fa-user"></i>
+          </a>
+          <a onClick="tabs(1)" class="tab">
+            <i class="fa fa-credit-card"></i>
+          </a>
+          <a onClick="tabs(2)" class="tab">
+            <i class="fa fa-tv"></i>
+          </a>
+          <a onClick="tabs(3)" class="tab">
+            <i class="fa fa-cog"></i>
+          </a>
+        </nav>
+      </div>
+      <div class="rightbox">
+        <div class="profile tabShow">
+          <h1>Información personal</h1>
+          <h2>Nombre completo</h2>
+          <input
+            type="text"
+            id="nombreUsuario"
+            class="input"
+            placeholder="Nombres Apellidos"
+          />
+          <h2>Dirección</h2>
+          <input
+            type="text"
+            id="direccionUsuario"
+            class="input"
+            placeholder="2200 NW 129th Avenue"
+          />
+          <h2>Email</h2>
+          <input
+            type="text"
+            id="correoUsuario"
+            class="input"
+            placeholder="mail@domain.com"
+          />
+          <h2>Teléfono</h2>
+          <input
+            type="text"
+            id="telefonoUsuario"
+            class="input"
+            placeholder="315787615"
+          />
+          <h2>Contraseña</h2>
+          <input
+            type="password"
+            id="contra1"
+            class="input"
+            placeholder="Contraseña"
+          />
+          <input
+            type="password"
+            id="contra2"
+            class="input"
+            placeholder="Confirmación contraseña"
+          />
+          <br />
+          <br />
+          <button class="btn-secondary" id="actualizar">
+            Actualizar información
+          </button>
+        </div>
+        <div class="payment tabShow">
+          <h1>Información de pagos</h1>
+          <h2>Número de Tarjeta</h2>
+          <input
+            type="text"
+            id="tarjeta"
+            class="input"
+            placeholder="0000 0000 0000 0000"
+            minlength="19"
+            maxlength="19"
+          />
+          <h2>Nombre</h2>
+          <input
+            type="text"
+            id="nombreTarjeta"
+            class="input"
+            placeholder="Nombres Apellidos"
+          />
+          <h2>Dirección</h2>
+          <input
+            type="text"
+            id="direccionTarjeta"
+            class="input"
+            placeholder="2200 NW 129th Avenue"
+          />
+          <h2>Fecha Vencimiento</h2>
+          <input
+            type="text"
+            id="vencTarjeta"
+            class="input"
+            placeholder="MM/YY"
+            minlength="5"
+            maxlength="5"
+          />
+          <h2>CVV</h2>
+          <input
+            type="password"
+            id="contra1"
+            class="input"
+            placeholder="&#9679;&#9679;&#9679;"
+            minlength="3"
+            maxlength="3"
+          />
+
+          <button class="btn-secondary" id="actualizar">Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!--**********************************************************************CONTACTO***********************************************-->
+    <div
+      class="modal fade"
+      id="exampleModal2"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Contacto de Clientes
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div
+              class="alert alert-primary alert-dismissible fade show text-left"
+              role="alert"
+            >
+              <strong>Info!</strong> Si tienes alguna pregunta no dudes en
+              contactarnos. Estaremos atentos a responder cualquier inquietud
+              que tengas.
+              <button
+                type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <h6>Nombre Completo</h6>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  ><i class="fa fa-user"></i
+                ></span>
+              </div>
+              <input
+                type="text"
+                id="nombre"
+                class="form-control"
+                placeholder="Nombres Apellidos"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+            <h6>Email</h6>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  ><i class="fa fa-envelope"></i
+                ></span>
+              </div>
+              <input
+                type="email"
+                id="mail"
+                class="form-control"
+                placeholder="Correo Electrónico"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+            <h6>Mensaje</h6>
+            <div class="input-group">
+              <textarea
+                class="form-control"
+                id="campo"
+                aria-label="With textarea"
+              ></textarea>
+            </div>
+          </div>
+          <div id="boton" class="modal-footer text-left">
+            <input
+              type="submit"
+              value="Contactar"
+              id="contactar"
+              class="btn btn-primary"
+              data-dismiss="modal"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--*************************************************************SECCIÒN DE HISTORIA*****************************************************-->
+    <div
+      class="modal fade"
+      id="modalHistoria"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Historia</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Nuestra empresa surgió directamente de un proyecto de la
+              universidad a través del curso de Software Avanzado en el cual nos
+              pidieron la implementación de una tienda en línea.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/funciones_cliente.js"></script>
+  </body>
+</html>
