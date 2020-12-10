@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const config = require('./config');
+const PORT = config.PORT;
 
 //APP SETTINGS
 app.set('port', 4000);
@@ -10,10 +13,24 @@ app.set('view engine', 'ejs');
 
 //MIDDLEWARES
 
+
 //ROUTES
 app.get('/', (req, res) => {
     res.render('index.html');
 });
+
+app.get('/proveedor', (req, res) => {
+    res.render('proveedor.html');
+});
+
+app.get('/cliente', (req, res) => {
+    res.render('cliente.html');
+});
+
+app.get('/perfil-cliente', (req, res) => {
+    res.render('perfil_cliente.html');
+});
+
 
 //STATIC FILES
 app.use(express.static(path.join(__dirname, 'public')));
