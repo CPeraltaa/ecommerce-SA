@@ -27,7 +27,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/cliente">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="modal" data-target="#modalHistoria" href="#">Historia</a>
@@ -44,6 +44,7 @@
         <a class="nav-link" href="/perfil-cliente">Perfil</a>
       </li>
       
+
       <li class="nav-item">
         <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">Cerrar Sesión</a>
       </li>
@@ -52,37 +53,40 @@
   </div>
 </nav>
  
-<div id="content">
-    <section class="py-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9">
-                    <h1>Bienvenido @Cliente</h1>
-                    <p class="lead text-muted">
-                        Revisa los articulo más vistos hoy
-                    </p>
-                </div>
-                <div class="col-lg-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <ul class="navbar-nav mr-auto">
+       
+       <li class="nav-item">
+          <select id="selCategoria" class="form-control">
+            <option selected>Elija una categoría...</option>
+            <option>...</option>
+          </select>
+       </li>
+       <li class="nav-item">
+          <button type="button" class="btn btn-success">Buscar</button>
+       </li>
+     </ul>
+     </form>
+  </div>
+</nav>
+
+<div class="container" align="center">
+  <div class="row">
+    <div class="col-md">
+      <h1>Bienvenido @Cliente</h1>
+      <p class="lead text-muted">
+          Revisa los artículos más vistos hoy...
+      </p>
+    </div>
+  </div>
 </div>
 
 <div class="d-flex" id="wrapper">
-<!-- barra lateral de categorias -->
-<div class="bg-dark border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading text-light">Categoria de productos </div>
-    <div class="list-group list-group-flush">
-      <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Abarrotes</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Tecnología</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Ropa</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Jardinería</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Automoviles</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Herramientas</a>
-    </div>
-  </div>
 
 <br>
 
@@ -154,11 +158,15 @@
         </div>
     </div>
 </div>
+<div class="container" align="center">
+    <table>
 
+    </table>
+</div>
 <div class="container col-12">
     <div class="row">
      <div class="listado col-12">
-       <h1 id="list">Listado de Obsequios</h1>
+       <h1 id="list">Lista de Productos</h1>
      </div>
      <br>
      <div class="col-sm-3">
