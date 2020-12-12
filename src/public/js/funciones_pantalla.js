@@ -1,3 +1,5 @@
+
+
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 });
@@ -92,7 +94,36 @@ var porId=document.getElementById("email2").value;
       document.getElementById("password").focus();
         alert("Debes Ingresar la Password");               
         return false;
+    }else{
+      //aqui se debe crear la lógica para consumir el webservice de login
+      var user = $("#email2").val();
+      var password = $("#password").val();
+      if(user=='admin@admin.com' && password=='admin'){
+        alert("es usuario administrador");
+        var url = "/proveedor";
+        $(location).attr('href', url);
+      }else{
+        alert("no es usuario administrador");
+        $.getJSON("localhost:4000?usuario="+user+"&password="+password ,
+        function(data){
+           $.each(data.items, function(i, item){
+              if(item.encontrado == true){
+                //redirecciona a perfil de usuario
+                //url de la pàgina a la que se redireccionara
+                var url = "proveedores?usuario="+user;
+                $(location).attr('href', url);
+              }else{
+                alert("Credenciales incorrectas!!!");
+              }
+           }); 
+        });
+      }
     }
 });
 
+
+
     });
+
+
+
