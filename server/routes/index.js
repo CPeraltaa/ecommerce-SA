@@ -40,6 +40,17 @@ var express = require('express');
 var db = require('../db/index');
 var bodyParser = require('body-parser');
 var router = express.Router();
+var mysql = require('mysql');
+var session = require('express-session');
+var path = require('path');
+var con = mysql.createConnection({
+    host: 'localhost',
+    port: '3308',
+    user: 'admin',
+    password: '1234',
+    database: 'proyectosa'
+});
+//------------------------lista proveedor y productos---------------
 router.get('/listaProveedores', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
     var results, e_1;
     return __generator(this, function (_a) {
@@ -60,13 +71,13 @@ router.get('/listaProveedores', function (req, res, next) { return __awaiter(voi
         }
     });
 }); });
-router["delete"]('/:id', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+router.get('/listaProductos', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
     var results, e_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, db.borrar(req.params.id)];
+                return [4 /*yield*/, db.allProductos()];
             case 1:
                 results = _a.sent();
                 res.json(results);
@@ -80,51 +91,151 @@ router["delete"]('/:id', function (req, res, next) { return __awaiter(void 0, vo
         }
     });
 }); });
-router.post('/registro', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var results, results, e_3;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 5, , 6]);
-                if (!(req.body.tipo == 1)) return [3 /*break*/, 2];
-                return [4 /*yield*/, db.insertarP(req.body.nombre, req.body.correo, req.body.direccion, req.body.password, req.body.tipo)];
-            case 1:
-                results = _a.sent();
-                res.json(results);
-                return [3 /*break*/, 4];
-            case 2: return [4 /*yield*/, db.insertarC(req.body.nombre, req.body.apellidos, req.body.correo, req.body.direccion, req.body.celular, req.body.password, req.body.tipo)];
-            case 3:
-                results = _a.sent();
-                res.json(results);
-                _a.label = 4;
-            case 4: return [3 /*break*/, 6];
-            case 5:
-                e_3 = _a.sent();
-                console.log(e_3);
-                res.sendStatus(500);
-                return [3 /*break*/, 6];
-            case 6: return [2 /*return*/];
-        }
-    });
-}); });
-router.get('/login', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var results, e_4;
+//----------------------------- borrar proveedor------------------
+router["delete"]('/:id', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var results, e_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, db.login(req.body.email, req.body.password)];
+                return [4 /*yield*/, db.borrar(req.params.id)];
             case 1:
                 results = _a.sent();
                 res.json(results);
                 return [3 /*break*/, 3];
             case 2:
-                e_4 = _a.sent();
-                console.log(e_4);
+                e_3 = _a.sent();
+                console.log(e_3);
                 res.sendStatus(500);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
     });
 }); });
+//-------------------------- registrar usuario-------------------------
+router.post('/registro', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var results, results, results, results, e_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 10, , 11]);
+                if (!(req.body.tipo == 1)) return [3 /*break*/, 5];
+                if (!(req.body.foto == "")) return [3 /*break*/, 2];
+                return [4 /*yield*/, db.insertarP(req.body.nombre, req.body.correo, req.body.direccion, req.body.password, req.body.tipo)];
+            case 1:
+                results = _a.sent();
+                res.json(results);
+                return [3 /*break*/, 4];
+            case 2: return [4 /*yield*/, db.insertarP(req.body.nombre, req.body.correo, req.body.direccion, req.body.password, req.body.tipo, req.body.foto)];
+            case 3:
+                results = _a.sent();
+                res.json(results);
+                _a.label = 4;
+            case 4: return [3 /*break*/, 9];
+            case 5:
+                if (!(req.body.foto == "")) return [3 /*break*/, 7];
+                return [4 /*yield*/, db.insertarC(req.body.nombre, req.body.apellidos, req.body.correo, req.body.direccion, req.body.celular, req.body.password, req.body.tipo)];
+            case 6:
+                results = _a.sent();
+                res.json(results);
+                return [3 /*break*/, 9];
+            case 7: return [4 /*yield*/, db.insertarC(req.body.nombre, req.body.apellidos, req.body.correo, req.body.direccion, req.body.celular, req.body.password, req.body.tipo, req.body.foto)];
+            case 8:
+                results = _a.sent();
+                res.json(results);
+                _a.label = 9;
+            case 9: return [3 /*break*/, 11];
+            case 10:
+                e_4 = _a.sent();
+                console.log(e_4);
+                res.sendStatus(500);
+                return [3 /*break*/, 11];
+            case 11: return [2 /*return*/];
+        }
+    });
+}); });
+//-------------------------CRUD PRODUCTO-------------------------------
+router.post('/insertarProducto', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var results, e_5;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, db.insertarProducto(req.body.nombre, req.body.cat_codcategoria, req.body.stock, req.body.precio, req.body.precio_venta)];
+            case 1:
+                results = _a.sent();
+                res.json(results);
+                return [3 /*break*/, 3];
+            case 2:
+                e_5 = _a.sent();
+                console.log(e_5);
+                res.sendStatus(500);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+router.put('/modificarProducto/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var results, e_6;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, db.updateProducto(req.body.nombre, req.body.cat_codcategoria, req.body.stock, req.body.precio, req.body.precio_venta, req.params.id)];
+            case 1:
+                results = _a.sent();
+                res.json(results);
+                return [3 /*break*/, 3];
+            case 2:
+                e_6 = _a.sent();
+                console.log(e_6);
+                res.sendStatus(500);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+router["delete"]('/eliminarProducto/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var results, e_7;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, db.borrarProducto(req.params.id)];
+            case 1:
+                results = _a.sent();
+                res.json(results);
+                return [3 /*break*/, 3];
+            case 2:
+                e_7 = _a.sent();
+                console.log(e_7);
+                res.sendStatus(500);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+//-----------------------------------------------------------------
+router.post('/auth', function (request, response) {
+    var email = request.body.correo;
+    var password = request.body.password;
+    console.log("entro al auth " + email + " " + password);
+    if (email && password) {
+        con.query('SELECT * FROM usuario WHERE email = ? AND contra = ?', [email, password], function (error, results, fields) {
+            if (results.length > 0) {
+                request.session.loggedin = true;
+                request.session.username = email;
+                response.redirect('/home'); //REDIRECT 
+            }
+            else {
+                response.send('Contraseña o usuario incorrecto');
+            }
+            response.end();
+        });
+    }
+    else {
+        response.send('favor ingresar nuevamente credenciales');
+        response.end();
+    }
+});
 module.exports = router;
