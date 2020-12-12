@@ -91,14 +91,14 @@ router.get('/listaProductos', function (req, res, next) { return __awaiter(void 
         }
     });
 }); });
-//----------------------------- borrar proveedor------------------
-router["delete"]('/:id', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+//-------------------detalles usuario-------------------------
+router.get('/getUsuario', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
     var results, e_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, db.borrar(req.params.id)];
+                return [4 /*yield*/, db.one(req.body.codusuario)];
             case 1:
                 results = _a.sent();
                 res.json(results);
@@ -112,9 +112,30 @@ router["delete"]('/:id', function (req, res, next) { return __awaiter(void 0, vo
         }
     });
 }); });
+//----------------------------- borrar proveedor------------------
+router["delete"]('/:id', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var results, e_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, db.borrar(req.params.id)];
+            case 1:
+                results = _a.sent();
+                res.json(results);
+                return [3 /*break*/, 3];
+            case 2:
+                e_4 = _a.sent();
+                console.log(e_4);
+                res.sendStatus(500);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
 //-------------------------- registrar usuario-------------------------
 router.post('/registro', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var results, results, results, results, e_4;
+    var results, results, results, results, e_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -146,8 +167,8 @@ router.post('/registro', function (req, res, next) { return __awaiter(void 0, vo
                 _a.label = 9;
             case 9: return [3 /*break*/, 11];
             case 10:
-                e_4 = _a.sent();
-                console.log(e_4);
+                e_5 = _a.sent();
+                console.log(e_5);
                 res.sendStatus(500);
                 return [3 /*break*/, 11];
             case 11: return [2 /*return*/];
@@ -156,32 +177,12 @@ router.post('/registro', function (req, res, next) { return __awaiter(void 0, vo
 }); });
 //-------------------------CRUD PRODUCTO-------------------------------
 router.post('/insertarProducto', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var results, e_5;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, db.insertarProducto(req.body.nombre, req.body.cat_codcategoria, req.body.stock, req.body.precio, req.body.precio_venta)];
-            case 1:
-                results = _a.sent();
-                res.json(results);
-                return [3 /*break*/, 3];
-            case 2:
-                e_5 = _a.sent();
-                console.log(e_5);
-                res.sendStatus(500);
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); });
-router.put('/modificarProducto/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var results, e_6;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, db.updateProducto(req.body.nombre, req.body.cat_codcategoria, req.body.stock, req.body.precio, req.body.precio_venta, req.params.id)];
+                return [4 /*yield*/, db.insertarProducto(req.body.nombre, req.body.cat_codcategoria, req.body.stock, req.body.precio, req.body.precio_venta)];
             case 1:
                 results = _a.sent();
                 res.json(results);
@@ -195,8 +196,28 @@ router.put('/modificarProducto/:id', function (req, res) { return __awaiter(void
         }
     });
 }); });
-router["delete"]('/eliminarProducto/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+router.put('/modificarProducto/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var results, e_7;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, db.updateProducto(req.body.nombre, req.body.cat_codcategoria, req.body.stock, req.body.precio, req.body.precio_venta, req.params.id)];
+            case 1:
+                results = _a.sent();
+                res.json(results);
+                return [3 /*break*/, 3];
+            case 2:
+                e_7 = _a.sent();
+                console.log(e_7);
+                res.sendStatus(500);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+router["delete"]('/eliminarProducto/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var results, e_8;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -207,8 +228,8 @@ router["delete"]('/eliminarProducto/:id', function (req, res) { return __awaiter
                 res.json(results);
                 return [3 /*break*/, 3];
             case 2:
-                e_7 = _a.sent();
-                console.log(e_7);
+                e_8 = _a.sent();
+                console.log(e_8);
                 res.sendStatus(500);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];

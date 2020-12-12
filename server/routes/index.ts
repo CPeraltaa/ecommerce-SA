@@ -34,6 +34,18 @@ router.get('/listaProductos', async (req, res, next) => {
         res.sendStatus(500);
     }
 });
+//-------------------detalles usuario-------------------------
+router.get('/getUsuario', async (req, res, next) => {
+    try{
+        
+        let results = await db.one(req.body.codusuario);
+        res.json(results);
+        
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
 //----------------------------- borrar proveedor------------------
 router.delete('/:id', async (req, res, next) => {
     try{
