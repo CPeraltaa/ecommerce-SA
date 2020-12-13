@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 	<link rel="shortcut icon"  href="/imagen/paso2.png">
-	<title>CLIENTE</title>
+	<title>CARRITO DE COMPRAS</title>
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="javaScript/alertifyjs/css/themes/default.css">
@@ -15,7 +15,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="javaScript/jquery-3.2.1.min.js"></script>
 <script src="javaScript/alertifyjs/alertify.js"></script>	
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/style_index.css">
 </head>
 <body>
@@ -30,19 +29,12 @@
       <li class="nav-item active">
         <a class="nav-link" href="/cliente">Home<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#modalHistoria" href="#">Historia</a>
-      </li>
-      
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#exampleModal2" href="#">Contacto</a>
-      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
      <ul class="navbar-nav mr-auto">
       
       <li class="nav-item">
-        <a class="nav-link" href="/perfil-cliente">Perfil</a>
+        <a class="nav-link" href="/cliente">Volver</a>
       </li>
       
 
@@ -60,43 +52,70 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item"></li>
       <li class="nav-item">
-          <a type="button" class="btn btn-info" id="botonCarrito" href="/carrito">
+          <button type="button" class="btn btn-info">
               <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
               </svg>
               <span class="badge bg-secondary" hidden="true"></span>
-            </a>
+            </button>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <ul class="navbar-nav mr-auto">
-       
-       <li class="nav-item">
-          <select id="selCategoria" class="form-control">
-            <option selected>Elija una categoría...</option>
-            <option>...</option>
-          </select>
-       </li>
-       <li class="nav-item">
-          <button type="button" class="btn btn-success">Buscar</button>
-       </li>
-     </ul>
-     </form>
   </div>
 </nav>
 
 <div class="container" align="center">
   <div class="row">
     <div class="col-md">
-      <h1>Bienvenido @Cliente</h1>
+      <h1>¿Eso es todo?</h1>
       <p class="lead text-muted">
-          Revisa los artículos más vistos hoy...
+          Revisa los artículos agregado a tu carrito de compras...
       </p>
     </div>
   </div>
 </div>
 
 <div class="d-flex" id="wrapper">
+    <div class="container">
+        <div class="row">
+          <div class="col-lg">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Producto</th>
+                  <th scope="col">Precio de Venta</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Subtotal</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Empty</td>
+                  <td>Q.0.00</td>
+                  <td><input type="number" id="cantidadProducto" class="input" placeholder="0.00"></td>
+                  <td><input type="number" id="cantidadProducto" class="input" placeholder="0.00" disabled></td>
+                  <td>
+                      <button type="button" class="btn btn-dark">
+                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                          </svg>
+                      </button>
+                    <button type="button" class="btn btn-danger">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+</div>
 
 <br>
 
@@ -168,103 +187,17 @@
         </div>
     </div>
 </div>
+
 <div class="container" align="center">
     <table>
 
     </table>
 </div>
-<div class="container col-12">
-    <div class="row">
-     <div class="listado col-12">
-       <h1 id="list">Lista de Productos</h1>
-     </div>
-     <br>
-     <div class="col-sm-3">
-     <div class="card">
-       <div class="card-body">
-         <h5 class="card-title text-center"><img id="img_obs" src="/imagen/alcanciabuena.png"></h5>
-         <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
-         Incluye: $50.000</p>
-         <p class="collapse" id="collapseExample">
-     Ver mas Respecto a este Articulo
-     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-   </p>
-         <p class="card-text text-right">
-         <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
-         <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
-       </p>
-       </div>
-     </div>
-   </div>
-   <div class="col-sm-3">
-     <div class="card">
-       <div class="card-body">
-         <h5 class="card-title text-center"><img id="img_obs" src="/imagen/cine.jpg"></h5>
-         <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
-         Incluye: $50.000</p>
-         <p class="collapse" id="collapseExample2">
-     Ver mas Respecto a este Articulo
-   </p>
-         <p class="card-text text-right">
-         <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
-         <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample"   href="#" class="btn bt-success">Más >></a>
-       </p>
-       </div>
-     </div>
-   </div>
-   <div class="col-sm-3">
-     <div class="card">
-       <div class="card-body">
-         <h5 class="card-title text-center"><img id="img_obs" src="/imagen/cereales.jpg"></h5>
-         <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
-         Incluye: $50.000</p>
-         <p class="collapse" id="collapseExample3">
-     Ver mas Respecto a este Articulo
-   </p>
-         <p class="card-text text-right">
-         <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
-         <a data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
-       </p>
-       </div>
-     </div>
-   </div>
-   <div class="col-sm-3">
-     <div class="card ">
-       <div class="card-body">
-         <h5 class="card-title text-center"><img id="img_obs" src="/imagen/123.jpg"></h5>
-         <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
-         Incluye: $50.000</p>
-        <p class="collapse" id="collapseExample4">
-     Ver mas Respecto a este Articulo
-   </p>
-         <p class="card-text text-right">
-         <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
-         <a data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
-       </p>
-       </div>
-     </div>
-   </div>
-   <div class="col-sm-3">
-     <div class="card">
-       <div class="card-body">
-         <h5 class="card-title text-center"><img id="img_obs" src="/imagen/bobina.jpg"></h5>
-         <p class="card-text"><label id="desayuno">Desayuno Sorpresa</label><br>Desayunos Sorpresa<br>Espectacular Detalle<br>
-         Incluye: $50.000</p>
-    <p class="collapse" id="collapseExample5">
-     Ver mas Respecto a este Articulo
-   </p>
-         <p class="card-text text-right">
-         <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="btn btn-primary">Añadir al Carrito</a>
-         <a data-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample" href="#" class="btn bt-success">Más >></a>
-       </p>
-       </div>
-     </div>
-   </div>
+
+     
+
+
+
 
 <!--**********************************************************************FOOTER DE PAGINA***********************************************-->
  <footer class = "footer">
@@ -295,7 +228,6 @@
         </div>
     </footer>
 
-    <script src="js/funciones.js"></script>
- <script src="js/funciones_cliente.js"></script>
+ <script src="/js/funciones_cliente.js"></script>
 </body>
 </html>

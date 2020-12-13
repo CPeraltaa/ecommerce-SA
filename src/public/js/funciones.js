@@ -133,3 +133,9 @@ boton.addEventListener('click', function(){
     })
  }
   });
+
+  var carrito = document.getElementById('botonCarrito');
+
+carrito.addEventListener('click', function(){
+    location('carrito.html');
+});

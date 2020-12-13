@@ -31,6 +31,10 @@ app.get('/perfil-cliente', (req, res) => {
     res.render('perfil_cliente.html');
 });
 
+app.get('/carrito', (req, res) => {
+    res.render('carrito.html');
+});
+
 
 //STATIC FILES
 app.use(express.static(path.join(__dirname, 'public')));
