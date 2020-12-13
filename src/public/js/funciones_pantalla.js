@@ -1,5 +1,3 @@
-
-
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 });
@@ -55,8 +53,8 @@ var porId=document.getElementById("email").value;
                 return false;
             }
             else if($('#pass1').val()==""){
-              document.getElementById("pass1").focus();
-                alert("Debes Ingresar la Password");               
+              document.getElementById("pass1").focus(); 
+                alert("Debes Ingresar la Password");              
                 return false;
             }
   
@@ -74,6 +72,39 @@ var porId=document.getElementById("email").value;
               document.getElementById("pass2").focus();
                 alert("La password debe tener minimo 6 Caracteres");               
                 return false;
+            }else{
+              alert('se puede registrar usuario');
+              
+               var nombre1 = document.getElementById("completo").value;
+               var direccion1 = document.getElementById("dir").value;
+               var email1 = document.getElementById("email").value;
+               var tel1 = document.getElementById("tel").value;
+               var tipoRegistro1 = document.getElementById("tipoUsuario").value
+               var pw = document.getElementById("pass1").value;
+               alert(nombre1 + " | " + direccion1 +" | "+ email1 +" | "+ tel+" | "+ tipoRegistro + " | " +pw);
+
+               var usuario = {
+                   nombre: nombre1,
+                   correo: email,
+                   celular: tel,
+                   direccion: direccion1,
+                   password: pw, 
+                   tipo: tipoRegistro1
+               }
+               axios.post('http://34.68.127.94/registro', {usuario})
+
+               .then(function(res){
+                 if(res.status==201){
+                   alert("Usuario registrado exitosamente!");
+                   var url = "/";
+                    $(location).attr('href', url);
+                 }else{
+                   document.getElementById("spanmensaje").innerText = "No se pudo registrar el usuario, intente de nuevo.";
+                 }
+               })
+               .catch(function(err){
+                 console.log(err);
+               })
             }
 });
 
@@ -104,7 +135,7 @@ var porId=document.getElementById("email2").value;
         $(location).attr('href', url);
       }else{
         alert("no es usuario administrador");
-        $.getJSON("localhost:4000?usuario="+user+"&password="+password ,
+        $.getJSON("http://34.68.127.94/auth"+user+"&password="+password ,
         function(data){
            $.each(data.items, function(i, item){
               if(item.encontrado == true){
@@ -124,6 +155,8 @@ var porId=document.getElementById("email2").value;
 
 
     });
+
+
 
 
 
