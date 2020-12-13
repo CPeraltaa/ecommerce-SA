@@ -4,14 +4,14 @@ const pool = mysql.createPool({
     password: '1234',
     user: 'admin',
     database: 'proyectosa',
-    host: 'localhost',
-    port: '3308',
+    host: '34.66.117.163',
+    port: '3306',
     multipleStatements : true
 });
 
 const con = mysql.createConnection({
-    host: 'localhost',
-    port: '3308',
+    host: '34.66.117.163',
+    port: '3306',
     user: 'admin',
     password: '1234',
     database: 'proyectosa'
