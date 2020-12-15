@@ -1,7 +1,7 @@
 var boton = document.getElementById('Ingresar');
 
 boton.addEventListener('click', function(){
-    alert("entro a la funcion");
+    //alert("entro a la funcion");
     re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
   var porId=document.getElementById("email2").value;
    if(porId==""){
@@ -23,13 +23,18 @@ boton.addEventListener('click', function(){
         var user = document.getElementById("email2").value;
         var password = document.getElementById("password").value;
         if(user=='admin@admin.com' && password=='admin'){
-          alert("es usuario administrador");
+          //alert("es usuario administrador");
           var url = "/proveedor";
           window.location = url;
-        }else{
+        }else if(user=='admin@cliente.com' && password=='admin'){
+            var url = "/cliente";
+            window.location = url;
+        }
+        else{
           alert("no es usuario administrador");
           axios.get('http://34.68.127.94', {
-              responseType: 'json'
+              correo: user,
+              password:password
           })
           .then(function(res){
               if(res.status==200){
@@ -51,7 +56,7 @@ boton.addEventListener('click', function(){
   var boton2 = document.getElementById('registrar');
 
   boton2.addEventListener('click', function(){
-    alert("entro a la funcion2");
+    //alert("entro a la funcion2");
     re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
   var porId=document.getElementById("email").value;
   if(document.getElementById('completo').value ==""){
@@ -107,17 +112,18 @@ boton.addEventListener('click', function(){
     var tel1 = document.getElementById("tel").value;
     var tipoRegistro1 = document.getElementById("tipoUsuario").value
     var pw = document.getElementById("pass1").value;
-    alert(nombre1 + " | " + direccion1 +" | "+ email1 +" | "+ tel+" | "+ tipoRegistro + " | " +pw);
+    alert(nombre1 + " | " + direccion1 +" | "+ email1 +" | "+ tel1+" | "+ tipoRegistro1 + " | " +pw);
 
     var usuario = {
         nombre: nombre1,
-        correo: email,
-        celular: tel,
+        correo: email1,
+        celular: tel1,
         direccion: direccion1,
         password: pw, 
         tipo: tipoRegistro1
     }
-    axios.post('http://34.68.127.94/registro', {usuario})
+    console.log(JSON.stringify(usuario));
+    axios.post('http://34.68.127.94/registro', JSON.stringify(usuario))
 
     .then(function(res){
       if(res.status==201){
