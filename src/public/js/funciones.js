@@ -31,15 +31,16 @@ boton.addEventListener('click', function(){
             window.location = url;
         }
         else{
+          var cliente = {
+            correo:user,
+            password:password
+          }
           alert("no es usuario administrador");
-          axios.get('http://34.68.127.94', {
-              correo: user,
-              password:password
-          })
-          .then(function(res){
-              if(res.status==200){
-                  console.log(res.data);
-                  alert("Credenciales Válidas");
+          axios.get('http://34.68.127.94/auth', JSON.stringify(cliente))
+          .then(res =>{
+              if(res.status ==200){
+                  console.log(JSON.stringify(res.data));
+                  alert("Credenciales Válidas: " + JSON.stringify(res.data));
               }else{
                   alert("Credenciales inválidas");
               }
@@ -117,24 +118,26 @@ boton.addEventListener('click', function(){
     var usuario = {
         nombre: nombre1,
         correo: email1,
-        celular: tel1,
         direccion: direccion1,
+        celular: tel1,
         password: pw, 
         tipo: tipoRegistro1
     }
     console.log(JSON.stringify(usuario));
     axios.post('http://34.68.127.94/registro', JSON.stringify(usuario))
-
-    .then(function(res){
+    .then(res => {
+      console.log("Retorno: "+res)
       if(res.status==201){
         alert("Usuario registrado exitosamente!");
         var url = "/";
          $(location).attr('href', url);
       }else{
         document.getElementById("spanmensaje").innerText = "No se pudo registrar el usuario, intente de nuevo.";
+        alert("No se pudo registrar el usuario, intente de nuevo.");
       }
     })
     .catch(function(err){
+      alert("[ERROR]: "+err);
       console.log(err);
     })
  }
