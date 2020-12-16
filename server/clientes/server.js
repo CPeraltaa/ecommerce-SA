@@ -1,14 +1,15 @@
-const express = require('express');
-const bodyParser = require('body-parser')
-const apiRoutes = require('./routes');
+'use strict'
 
-const app = express();
+const app = require('./app/app')
 
-app.set('port', process.env.PORT || 3000);
-app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use('/cliente', apiRoutes);
-app.listen(app.get('port'), () => {
-    console.log(`server running on ${app.get('port')}`);
-});
+// database
+
+require('./config/connection')
+
+app.listen(app.get('port'), (error) => {
+    if(error) {
+        console.log(`there was an error : ${error}`)
+    }else {
+        console.log(`server running on port : ${app.get('port')}`)
+    }
+})
