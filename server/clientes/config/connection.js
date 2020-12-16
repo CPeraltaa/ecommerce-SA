@@ -3,10 +3,10 @@
 const mysql = require('mysql'),
       objectConnection = {
         connectionLimit: 10,
-        host: 'localhost',
-        port: '3306',
-        user: 'root',
-        password: 'password',
+        host: '34.66.117.163',
+        port: '3308',
+        user: 'admin',
+        password: 'T@shkjet20',
         database: 'proyectosa',
         multipleStatements : true,
         insecureAuth : true
