@@ -31,7 +31,6 @@ boton.addEventListener("click", function () {
         correo: user,
         password: password,
       };
-      alert("no es usuario administrador");
       const headers = {
         "Content-Type": "application/json",
       };
@@ -154,6 +153,88 @@ boton2.addEventListener("click", function () {
         console.log(err);
       });
   }
+});
+
+var calcularSubtotal = document.getElementById("subTotalProducto");
+calcularSubtotal.addEventListener("keydown", function(){
+
+    var precio = document.getElementById("precioProducto").value;
+    alert("precio:" + precio);
+    var cantidad = document.getElementById("cantidadProducto").value;
+    alert("Cantidad:" + precio);
+    if(cantidad > 0){
+      var subtotal = precio.value * cantidad.value;
+    alert("Subtotal: " + subtotal.value);
+    document.getElementById("subTotalProducto").value = subtotal;
+    }else{
+      alert("Debe elegir al menos un producto para agregar al carrito.");
+    }
+
+});
+
+function calcularSubTotal(){
+    var precio = document.getElementById("precioProducto").value;
+    var cantidad = document.getElementById("cantidadProducto").value;
+    var subtotal = precio * cantidad;
+    alert("Subtotal: " + subtotal.value);
+    document.getElementById("subTotalProducto").value = subtotal;
+}
+
+var agrearProducto = document.getElementById("btnAñadeAlCarrito");
+
+boton2.addEventListener("click", function () {
+  //alert("entro a la funcion2");
+  re = /^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+  var cantidad = document.getElementById("cantidadProductos").value;
+  if(cantidad <= 0){
+      alert("Debe elegir al menos un producto para agregar al carrito de compra.");
+  }else if(cantidad >0)
+    alert("Información correcta...");
+
+    var nombre1 = document.getElementById("nombreProducto").value;
+    var precio1 = document.getElementById("precioProducto").value;
+    var cantidad1 = document.getElementById("cantidadProducto").value;
+    var usuario1 = "admin";
+
+    var producto = {
+      id_cliente: usuario1,
+      producto: nombre1,
+      cantidad: cantidad1,
+      subtotal: precio1
+    }
+    var usuario = {
+      nombre: nombre1,
+      correo: email1,
+      direccion: direccion1,
+      celular: tel1,
+      password: pw,
+      tipo: tipoRegistro1,
+    };
+    console.log(JSON.stringify(usuario));
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    axios
+      .post("http://34.68.127.94/registro", JSON.stringify(usuario), {
+        headers: headers,
+      })
+      .then((res) => {
+        console.log("Retorno: " + res);
+        if (res.status == 201) {
+          alert("Usuario registrado exitosamente!");
+          var url = "/";
+          $(location).attr("href", url);
+        } else {
+          document.getElementById("spanmensaje").innerText =
+            "No se pudo registrar el usuario, intente de nuevo.";
+          alert("No se pudo registrar el usuario, intente de nuevo.");
+        }
+      })
+      .catch(function (err) {
+        alert("[ERROR]: " + err);
+        console.log(err);
+      });
+
 });
 
 var carrito = document.getElementById("botonCarrito");
