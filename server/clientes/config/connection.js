@@ -4,7 +4,7 @@ const mysql = require('mysql'),
       objectConnection = {
         connectionLimit: 10,
         host: '34.66.117.163',
-        port: '3308',
+        port: '3306',
         user: 'admin',
         password: 'T@shkjet20',
         database: 'proyectosa',
