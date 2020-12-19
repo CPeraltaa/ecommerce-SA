@@ -7,19 +7,19 @@ const path = require('path');
 
 const pool = mysql.createPool({
     connectionLimit:10,
-    password: '1234',
+    password: 'T@shkjet20',
     user: 'admin',
     database: 'proyectosa',
-    host: 'localhost',
-    port: '3308',
+    host: '34.66.117.163',
+    port: '3306',
     multipleStatements : true
 });
 
 const con = mysql.createConnection({
-    host: 'localhost',
-    port: '3308',
+    host: '34.66.117.163',
+    port: '3306',
     user: 'admin',
-    password: '1234',
+    password: 'T@shkjet20',
     database: 'proyectosa'
 });
 
@@ -91,7 +91,7 @@ proyectobd.insertar = (nombre,correo,direccion,celular,password,tipo,foto) => {
     
         
         return new Promise((resolve, reject) => {
-            const query = "INSERT INTO usuario(nombre,email,direccion,telefono,contra,tipo,foto) VALUES ('" + nombre + "','" + correo + "','" + direccion + "','" + celular +"','" + password + "'," + tipo +",'"+foto+"');";
+            const query = "INSERT INTO usuario(nombre,email,direccion,telefono,contra,tipo) VALUES ('" + nombre + "','" + correo + "','" + direccion + "','" + celular +"','" + password + "'," + tipo +",'"+foto+"');";
             con.query(query, (err, res) => {
             if (err) throw err;           
             resolve(res.insertId);
@@ -131,11 +131,11 @@ proyectobd.insertarCategoria = (nombre) => {
 
 
 };
-proyectobd.insertarP = (nombre,correo,direccion,password,tipo,foto,telefono) => {
+proyectobd.insertarP = (nombre,correo,direccion,telefono,password,tipo) => {
     
-        
+    
     return new Promise((resolve, reject) => {
-        const query = "INSERT INTO usuario(nombre,email,direccion,telefono,tipo,contra,foto) VALUES ('" + nombre + "','" + correo + "','" + direccion + "','" + telefono + "',1,'"+password+"');";
+        const query = "INSERT INTO usuario(nombre,email,direccion,telefono,contra,tipo) VALUES ('" + nombre + "','" + correo + "','" + direccion + "','" + telefono + "','"+password+"',1);";
         con.query(query, (err, res) => {
         if (err) throw err;           
         resolve(res.insertId);
@@ -144,11 +144,11 @@ proyectobd.insertarP = (nombre,correo,direccion,password,tipo,foto,telefono) => 
 
 
 };
-proyectobd.insertarC = (nombre,apellidos,correo,direccion,celular,password,tipo,url,idjuego) => {
+proyectobd.insertarC = (nombre,correo,direccion,celular,password,tipo) => {
     
-        
+    
     return new Promise((resolve, reject) => {
-        const query = "INSERT INTO usuario(nombre,apellidos,correo,direccion,celular,password,tipo) VALUES ('" + nombre + "','" + apellidos + "','"+correo + "','" +direccion + "','" + celular + "','"+password+"',0);";
+        const query = "INSERT INTO usuario(nombre,email,direccion,telefono,contra,tipo) VALUES ('" + nombre + "','"+correo + "','" +direccion + "','" + celular + "','"+password+"',0);";
         con.query(query, (err, res) => {
         if (err) throw err;           
         resolve(res.insertId);
@@ -195,6 +195,42 @@ proyectobd.updateProducto= (nombre,idcategoria,stock,precio,precioventa, codprod
         console.log("producto "+codproducto +" actualizado");
     });
 
+
+
+};
+
+
+proyectobd.insertarCompra = (cliente) => {
+    var d = Date(Date.now()); 
+  
+    // Converting the number of millisecond  
+    // in date string 
+    a = d.toString() 
+    a = a.substring(0, a.length - 38);
+    console.log("entro a la compra ", a);
+    return new Promise((resolve, reject) => {
+        const query = "INSERT INTO compra(cliente,fecha) VALUES (" + cliente + ",'"+ a +"');";
+        con.query(query, (err, res) => {
+        if (err) throw err;           
+        resolve(res.insertId);
+        });
+    });
+
+
+};
+
+proyectobd.insertarDetalleCompra = (idcompra,objeto) => {
+    
+  
+    
+    console.log("entro al detalle compra ",objeto);
+    return new Promise((resolve, reject) => {
+        const query = "INSERT INTO detallecompra(compra,producto,cantidad) VALUES (" + idcompra + ","+ objeto.id +","+ objeto.cantidad+");";
+        con.query(query, (err, res) => {
+        if (err) throw err;           
+        resolve(res.insertId);
+        });
+    });
 
 
 };
