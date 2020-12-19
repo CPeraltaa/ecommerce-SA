@@ -1,0 +1,19 @@
+version: "3.3"
+
+services:
+  server-fase1:
+    container_name: server-fase1
+    build:
+      context: ./server2
+    restart: always
+    ports:       
+      - 80:3000
+    volumes:
+      - type: bind
+        source: ./server2/server
+        target: /usr/src/app2/server
+    command: bash -c "npm run start"
+
+volumes:
+    db_persistent_data:
+      driver: local
