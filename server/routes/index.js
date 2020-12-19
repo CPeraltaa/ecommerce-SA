@@ -38,18 +38,20 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var express = require('express');
 var db = require('../db/index');
+var axios = require('axios');
 var bodyParser = require('body-parser');
 var router = express.Router();
 var mysql = require('mysql');
 var session = require('express-session');
 var path = require('path');
 var con = mysql.createConnection({
-    host: 'localhost',
-    port: '3308',
+    host: '34.66.117.163',
+    port: '3306',
     user: 'admin',
-    password: '1234',
+    password: 'T@shkjet20',
     database: 'proyectosa'
 });
+var objsCarrito = new Array();
 //------------------------lista proveedor y productos---------------
 router.get('/listaProveedores', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
     var results, e_1;
@@ -60,7 +62,7 @@ router.get('/listaProveedores', function (req, res, next) { return __awaiter(voi
                 return [4 /*yield*/, db.allProveedores()];
             case 1:
                 results = _a.sent();
-                res.json(results);
+                res.status(200).json(results);
                 return [3 /*break*/, 3];
             case 2:
                 e_1 = _a.sent();
@@ -80,7 +82,7 @@ router.get('/listaProductos', function (req, res, next) { return __awaiter(void 
                 return [4 /*yield*/, db.allProductos()];
             case 1:
                 results = _a.sent();
-                res.json(results);
+                res.status(200).json(results);
                 return [3 /*break*/, 3];
             case 2:
                 e_2 = _a.sent();
@@ -91,17 +93,17 @@ router.get('/listaProductos', function (req, res, next) { return __awaiter(void 
         }
     });
 }); });
-//----------------------------- borrar proveedor------------------
-router["delete"]('/:id', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+//-------------------detalles usuario-------------------------
+router.get('/getUsuario', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
     var results, e_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, db.borrar(req.params.id)];
+                return [4 /*yield*/, db.one(req.body.codusuario)];
             case 1:
                 results = _a.sent();
-                res.json(results);
+                res.status(200).json(results);
                 return [3 /*break*/, 3];
             case 2:
                 e_3 = _a.sent();
@@ -112,51 +114,58 @@ router["delete"]('/:id', function (req, res, next) { return __awaiter(void 0, vo
         }
     });
 }); });
-//-------------------------- registrar usuario-------------------------
-router.post('/registro', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var results, results, results, results, e_4;
+//----------------------------- borrar proveedor------------------
+router["delete"]('/:id', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var results, e_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 10, , 11]);
-                if (!(req.body.tipo == 1)) return [3 /*break*/, 5];
-                if (!(req.body.foto == "")) return [3 /*break*/, 2];
-                return [4 /*yield*/, db.insertarP(req.body.nombre, req.body.correo, req.body.direccion, req.body.password, req.body.tipo)];
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, db.borrar(req.params.id)];
             case 1:
                 results = _a.sent();
-                res.json(results);
-                return [3 /*break*/, 4];
-            case 2: return [4 /*yield*/, db.insertarP(req.body.nombre, req.body.correo, req.body.direccion, req.body.password, req.body.tipo, req.body.foto)];
-            case 3:
-                results = _a.sent();
-                res.json(results);
-                _a.label = 4;
-            case 4: return [3 /*break*/, 9];
-            case 5:
-                if (!(req.body.foto == "")) return [3 /*break*/, 7];
-                return [4 /*yield*/, db.insertarC(req.body.nombre, req.body.apellidos, req.body.correo, req.body.direccion, req.body.celular, req.body.password, req.body.tipo)];
-            case 6:
-                results = _a.sent();
-                res.json(results);
-                return [3 /*break*/, 9];
-            case 7: return [4 /*yield*/, db.insertarC(req.body.nombre, req.body.apellidos, req.body.correo, req.body.direccion, req.body.celular, req.body.password, req.body.tipo, req.body.foto)];
-            case 8:
-                results = _a.sent();
-                res.json(results);
-                _a.label = 9;
-            case 9: return [3 /*break*/, 11];
-            case 10:
+                res.status(200).json(results);
+                return [3 /*break*/, 3];
+            case 2:
                 e_4 = _a.sent();
                 console.log(e_4);
                 res.sendStatus(500);
-                return [3 /*break*/, 11];
-            case 11: return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+//-------------------------- registrar usuario-------------------------
+router.post('/registro', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var results, results, e_5;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 5, , 6]);
+                if (!(req.body.tipo == 1)) return [3 /*break*/, 2];
+                return [4 /*yield*/, db.insertarP(req.body.nombre, req.body.correo, req.body.direccion, req.body.celular, req.body.password, req.body.tipo)];
+            case 1:
+                results = _a.sent();
+                res.sendStatus(201);
+                return [3 /*break*/, 4];
+            case 2: return [4 /*yield*/, db.insertarC(req.body.nombre, req.body.correo, req.body.direccion, req.body.celular, req.body.password, req.body.tipo)];
+            case 3:
+                results = _a.sent();
+                res.sendStatus(201);
+                _a.label = 4;
+            case 4: return [3 /*break*/, 6];
+            case 5:
+                e_5 = _a.sent();
+                console.log(e_5);
+                res.sendStatus(500);
+                return [3 /*break*/, 6];
+            case 6: return [2 /*return*/];
         }
     });
 }); });
 //-------------------------CRUD PRODUCTO-------------------------------
 router.post('/insertarProducto', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var results, e_5;
+    var results, e_6;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -164,27 +173,7 @@ router.post('/insertarProducto', function (req, res) { return __awaiter(void 0, 
                 return [4 /*yield*/, db.insertarProducto(req.body.nombre, req.body.cat_codcategoria, req.body.stock, req.body.precio, req.body.precio_venta)];
             case 1:
                 results = _a.sent();
-                res.json(results);
-                return [3 /*break*/, 3];
-            case 2:
-                e_5 = _a.sent();
-                console.log(e_5);
-                res.sendStatus(500);
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); });
-router.put('/modificarProducto/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var results, e_6;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, db.updateProducto(req.body.nombre, req.body.cat_codcategoria, req.body.stock, req.body.precio, req.body.precio_venta, req.params.id)];
-            case 1:
-                results = _a.sent();
-                res.json(results);
+                res.status(200).json(results);
                 return [3 /*break*/, 3];
             case 2:
                 e_6 = _a.sent();
@@ -195,16 +184,16 @@ router.put('/modificarProducto/:id', function (req, res) { return __awaiter(void
         }
     });
 }); });
-router["delete"]('/eliminarProducto/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+router.put('/modificarProducto/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var results, e_7;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, db.borrarProducto(req.params.id)];
+                return [4 /*yield*/, db.updateProducto(req.body.nombre, req.body.cat_codcategoria, req.body.stock, req.body.precio, req.body.precio_venta, req.params.id)];
             case 1:
                 results = _a.sent();
-                res.json(results);
+                res.status(200).json(results);
                 return [3 /*break*/, 3];
             case 2:
                 e_7 = _a.sent();
@@ -215,20 +204,40 @@ router["delete"]('/eliminarProducto/:id', function (req, res) { return __awaiter
         }
     });
 }); });
+router["delete"]('/eliminarProducto/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var results, e_8;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, db.borrarProducto(req.params.id)];
+            case 1:
+                results = _a.sent();
+                res.status(200).json(results);
+                return [3 /*break*/, 3];
+            case 2:
+                e_8 = _a.sent();
+                console.log(e_8);
+                res.sendStatus(500);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
 //-----------------------------------------------------------------
 router.post('/auth', function (request, response) {
-    var email = request.body.correo;
-    var password = request.body.password;
+    var email = request.correo;
+    var password = request.password;
     console.log("entro al auth " + email + " " + password);
     if (email && password) {
         con.query('SELECT * FROM usuario WHERE email = ? AND contra = ?', [email, password], function (error, results, fields) {
             if (results.length > 0) {
                 request.session.loggedin = true;
                 request.session.username = email;
-                response.redirect('/home'); //REDIRECT 
+                response.status(200).send(JSON.stringify({ "codusuario": results[0].codusuario })); //REDIRECT 
             }
             else {
-                response.send('Contraseña o usuario incorrecto');
+                response.send(401);
             }
             response.end();
         });
@@ -238,4 +247,84 @@ router.post('/auth', function (request, response) {
         response.end();
     }
 });
+var header = {
+    "Content-Type": "application/json"
+};
+//-------------------------------compra--------------------------
+router.post('/compra', function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var id;
+    return __generator(this, function (_a) {
+        console.log("cod cliente" + req.body.idcliente);
+        id = req.body.idcliente;
+        funcionLista(req, res, function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var idCompra, _a, _b, _i, i, iddetalle, e_9;
+                return __generator(this, function (_c) {
+                    switch (_c.label) {
+                        case 0:
+                            _c.trys.push([0, 6, , 7]);
+                            return [4 /*yield*/, db.insertarCompra(id)];
+                        case 1:
+                            idCompra = _c.sent();
+                            //res.json(idCompra);
+                            console.log("tamaño ", objsCarrito.length);
+                            _a = [];
+                            for (_b in objsCarrito)
+                                _a.push(_b);
+                            _i = 0;
+                            _c.label = 2;
+                        case 2:
+                            if (!(_i < _a.length)) return [3 /*break*/, 5];
+                            i = _a[_i];
+                            console.log("for ", i, " ", objsCarrito[i]);
+                            return [4 /*yield*/, db.insertarDetalleCompra(idCompra, objsCarrito[i])];
+                        case 3:
+                            iddetalle = _c.sent();
+                            _c.label = 4;
+                        case 4:
+                            _i++;
+                            return [3 /*break*/, 2];
+                        case 5:
+                            res.json(objsCarrito);
+                            return [3 /*break*/, 7];
+                        case 6:
+                            e_9 = _c.sent();
+                            console.log(e_9);
+                            res.sendStatus(500);
+                            return [3 /*break*/, 7];
+                        case 7: return [2 /*return*/];
+                    }
+                });
+            });
+        }.bind(this));
+        return [2 /*return*/];
+    });
+}); });
+function funcionLista(req, res, callback) {
+    listarCarrito(req, res, function () {
+        return callback();
+    }.bind(this));
+}
+function listarCarrito(req, res, callback) {
+    console.log("llamando servicio listar...");
+    llamarServicioListar(req, res, function () {
+        return callback();
+    }.bind(this));
+}
+function llamarServicioListar(req, res, callback) {
+    var j = axios.get('http://34.70.142.209/api/car/' + req.body.idcliente, {
+        headers: header
+    })
+        .then(function (response) {
+        console.log("->>>>>>  Consumiendo servicio de obtener carrito" + req.body.idcliente);
+        for (var i in response.data) {
+            objsCarrito.push(response.data[i]);
+        }
+        console.log("objetos carrito:", objsCarrito);
+        return callback(objsCarrito);
+        //res.json(response.data)
+    })["catch"](function (e) {
+        res.send(e.message);
+    });
+}
 module.exports = router;
