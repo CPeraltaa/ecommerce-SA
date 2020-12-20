@@ -1,6 +1,7 @@
-export interface RequestCar{
-    id_cliente:number;
-    producto:string;
-    cantidad:number;
-    subtotal:number;
+export interface RequestCar {
+  id_cliente: number;
+  producto: string;
+  cantidad: number;
+  subtotal: number;
+  tipo: string;
 }
