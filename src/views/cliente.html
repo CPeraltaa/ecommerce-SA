@@ -67,6 +67,15 @@
               <span class="badge bg-secondary" hidden="true"></span>
             </a>
       </li>
+      <li class="nav-item">
+        <a type="button" class="btn btn-danger" id="botonDescargarProductos" href="#" onclick="cargarProductosEnPantalla(this);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+            <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+          </svg>
+            <span class="badge bg-secondary" hidden="true"></span>
+        </a>
+    </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <ul class="navbar-nav mr-auto">
@@ -177,12 +186,15 @@
     </table>
 </div>
 <div class="container col-12">
-    <div class="row">
+    <div class="row" id="catalogo">
      <div class="listado col-12">
        <h1 id="list">Lista de Productos</h1>
      </div>
      <br>
-     <div class="col-sm-3">
+     <div id="divDeProductos">
+
+     </div>
+     <!--<div class="col-sm-3">
      <div class="card">
        <div class="card-body">
          <h5 class="card-title text-center"><img id="img_obs" src="/imagen/alcanciabuena.png"></h5>
@@ -267,8 +279,8 @@
        </p>
        </div>
      </div>
-   </div>
-
+   </div>-->
+</div>
    <!--****************************************************************AGREGAR PRODUCTOS AL CARRITO*********************************************-->
    <div class="modal fade col-12" id="ModalProductos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -286,7 +298,7 @@
           <div class="col-sm-6 text-left">
            <p>
             <i class="icon fa fa-check-square-o"></i>Nombre: <input type="text" id="nombreProducto" value="Desayuno Sorpresa" disabled="true"><br>
-             <i class="icon fa fa-check-square-o"></i>Precio: (Q.) <input type="number" id="precioProducto" value="85.50" disabled="true"> <br>
+             <i class="icon fa fa-check-square-o"></i>Precio: (Q.) <input type="number" id="precioProducto" value="85" disabled="true"> <br>
              <i class="icon fa fa-check-square-o"></i>Cantidad: <input type="number" id="cantidadProducto" value="1"><br>
              <i class="icon fa fa-check-square-o"></i>Subtotal: (Q.) <input type="number" id="subTotalProducto" value="0" onchange="calcular(this); return false;" disabled="true">
              <input type="submit" value="Calcular" id="btnCalcularSubtotal" class="btn btn-info" onclick="calcular(this); return false;"/> 
@@ -310,7 +322,7 @@
         </div>
         <div id="boton" class="modal-footer text-left">
           <input type="submit" value="Volver" id="btnVolver" class="btn btn-primary" data-dismiss="modal" />
-          <input type="submit" value="Añadir al Carrito" id="btnAñadeAlCarrito" class="btn btn-primary" data-dismiss="modal" />
+          <input type="submit" value="Añadir al Carrito" id="btnAñadeAlCarrito" class="btn btn-primary" onclick="agregarProductoCarrito(this);" />
         </div>
       </div>
     </div>
