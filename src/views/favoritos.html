@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+	<link rel="shortcut icon"  href="/imagen/paso2.png">
+	<title>LISTADO DE FAVORITOS</title>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="javaScript/alertifyjs/css/themes/default.css">
+<link rel="stylesheet" type="text/css" href="javaScript/alertifyjs/css/alertify.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="javaScript/jquery-3.2.1.min.js"></script>
+<script src="javaScript/alertifyjs/alertify.js"></script>	
+<link rel="stylesheet" type="text/css" href="/css/style_index.css">
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">ECOMMERCE SA |</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/cliente">Home<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+     <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/cliente">Volver</a>
+      </li>
+      
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="/">Cerrar Sesión</a>
+      </li>
+    </ul>
+    </form>
+  </div>
+</nav>
+ 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"></li>
+      <li class="nav-item">
+          <button type="button" class="btn btn-info">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+              </svg>
+              <span class="badge bg-secondary" hidden="true"></span>
+            </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container" align="center">
+  <div class="row">
+    <div class="col-md">
+      <h1>¿Eso es todo?</h1>
+      <p class="lead text-muted">
+          Revisa tu listado de productos favoritos...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex" id="wrapper">
+    <div class="container">
+        <div class="row">
+          <div class="col-lg">
+          <div id="detallecompra">
+
+          </div>
+            
+          </div>
+        </div>
+      </div>
+</div>
+<div id="temporal">
+  <button type="button1" onclick="mostrarFavoritos(7)">
+    Mostrar Favoritos
+  </button>
+</div>
+
+<br>
+
+<!--**********************************************************************CONTACTO***********************************************-->
+ <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contacto de Clientes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-primary alert-dismissible fade show text-left" role="alert">
+  <strong>Info!</strong> Si tienes alguna pregunta no dudes en contactarnos. Estaremos atentos a responder cualquier inquietud que tengas.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+        <h6>Nombre Completo</h6>
+        <div class="input-group mb-3">
+
+  <div class="input-group-prepend">
+    
+    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+  </div>
+  <input type="text" id="nombre" class="form-control" placeholder="Nombres Apellidos" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+<h6>Email</h6>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    
+    <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+  </div>
+  <input type="email" id="mail" class="form-control" placeholder="Correo Electrónico" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+<h6>Mensaje</h6>
+<div class="input-group">
+
+  <textarea class="form-control" id="campo" aria-label="With textarea"></textarea>
+</div>
+
+ 
+      </div>
+      <div id="boton" class="modal-footer text-left">
+        
+        <input type="submit" value="Contactar" id="contactar" class="btn btn-primary" data-dismiss="modal" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--*************************************************************SECCIÒN DE HISTORIA*****************************************************-->
+<div class="modal fade" id="modalHistoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Historia</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <p>Nuestra empresa surgió directamente de un proyecto de la universidad a través del curso de Software Avanzado
+                    en el cual nos pidieron la implementación de una tienda en línea.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" align="center">
+    <table>
+
+    </table>
+</div>
+
+     
+
+
+
+
+<!--**********************************************************************FOOTER DE PAGINA***********************************************-->
+ <footer class = "footer">
+        <div id="cont"  class = "container col-12">
+          <div class="row">
+           <div  class="col-sm-12 text-center">
+            <h2 id="titulo">¿Cómo comprar en ECOMMERCE SA?</h2>
+           </div>
+           <div class="col-sm-4 text-center">
+            <img id="img_footer" src="/imagen/paso1.png">
+            <p id="mensajito"><h5>1. Elige tu producto</h5>
+                <br>Navega dentro de las categorías de nuestros productos y elige el que necesites.
+            </p>
+           </div>
+           <div class="col-sm-4 text-center">
+             <img id="img_footer" src="/imagen/paso2.png">
+             <p id="mensajito"><h5>2. Define tu forma de pago</h5>
+                 <br>Elige si deseas pagar con tu tarjeta de crédito o débito.
+            </p>
+           </div>
+           <div class="col-sm-4 text-center">
+             <img id="img_footer" src="/imagen/paso3.png">
+             <p id="mensajito"><h5>3. Recibe tu producto</h5>
+                 <br>Nosotros te enviaremos tus productos directamente hasta la puerta de tu casa.
+            </p>
+           </div>
+         </div>
+        </div>
+    </footer>
+
+ <script src="/js/funciones_cliente.js"></script>
+ <script src="/js/funciones.js"></script>
+</body>
+</html>
