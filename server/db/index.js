@@ -45,6 +45,27 @@ proyectobd.allProductos = () => {
         });
     });
 };
+
+proyectobd.allProductosProveedor = (proveedor) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`SELECT * FROM producto, product_prov WHERE product_prov.proveedor = ? AND producto.codproducto = product_prov.product`,[proveedor], (err,results) =>{
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
+        });
+    });
+};
+proyectobd.allDetalleCompra = (id) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`SELECT * FROM detallecompra where compra= ?`,[id], (err,results) =>{
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
+        });
+    });
+};
 proyectobd.one = (id) => {
     return new Promise((resolve, reject) => {
         pool.query(`SELECT * FROM usuario WHERE codusuario= ? `, [id], (err,results) =>{
@@ -52,6 +73,26 @@ proyectobd.one = (id) => {
                 return reject(err);
             }
             return resolve(results[0]);
+        });
+    });
+};
+proyectobd.getProducto = (id) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`SELECT * FROM producto WHERE codproducto= ? `, [id], (err,results) =>{
+            if(err){
+                return reject(err);
+            }
+            return resolve(results[0]);
+        });
+    });
+};
+proyectobd.listarCompras = (id) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`SELECT * FROM compra WHERE cliente= ? `, [id], (err,results) =>{
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
         });
     });
 };
@@ -171,6 +212,19 @@ proyectobd.insertarProducto = (nombre,idcategoria,stock,precio,precioventa) => {
 
 
 };
+proyectobd.insertarProductoProveedor = (producto,proveedor) => {
+    
+        
+    return new Promise((resolve, reject) => {
+        const query = "INSERT INTO product_prov(proveedor,product) VALUES (" + proveedor + "," + producto + ");";
+        con.query(query, (err, res) => {
+        if (err) throw err;           
+        resolve(res.insertId);
+        });
+    });
+
+
+};
 
 
 proyectobd.insertarPoductoImagen = (nombre,idcategoria,stock,path,precio,precioventa) => {
@@ -198,9 +252,41 @@ proyectobd.updateProducto= (nombre,idcategoria,stock,precio,precioventa, codprod
 
 
 };
+proyectobd.insertarFactura = (cliente,nit,direccion,total) => {
+    var d = Date(Date.now()); 
+  
+    // Converting the number of millisecond  
+    // in date string 
+    a = d.toString() 
+    a = a.substring(0, a.length - 38);
+    console.log("entro a la factura ", a);
+    return new Promise((resolve, reject) => {
+        const query = "INSERT INTO factura(codcliente,nit,direccion,fecha,total) VALUES (" + cliente + ",'"+nit+"','"+direccion+"','"+ a +"',"+total+");";
+        con.query(query, (err, res) => {
+        if (err) throw err;           
+        resolve(res.insertId);
+        });
+    });
 
 
-proyectobd.insertarCompra = (cliente) => {
+};
+
+proyectobd.insertarDetalleFactura = (idfactura,objeto) => {
+    
+  
+    
+    console.log("entro al detalle factura ",objeto);
+    return new Promise((resolve, reject) => {
+        const query = "INSERT INTO detallefactura(codfactura,codproducto,cantidad,subtotal) VALUES (" + idfactura + ","+ objeto.producto +","+ objeto.cantidad+","+objeto.subtotal+");";
+        con.query(query, (err, res) => {
+        if (err) throw err;           
+        resolve(res.insertId);
+        });
+    });
+
+
+};
+proyectobd.insertarCompra = (cliente,total) => {
     var d = Date(Date.now()); 
   
     // Converting the number of millisecond  
@@ -209,7 +295,7 @@ proyectobd.insertarCompra = (cliente) => {
     a = a.substring(0, a.length - 38);
     console.log("entro a la compra ", a);
     return new Promise((resolve, reject) => {
-        const query = "INSERT INTO compra(cliente,fecha) VALUES (" + cliente + ",'"+ a +"');";
+        const query = "INSERT INTO compra(cliente,fecha,total) VALUES (" + cliente + ",'"+ a +"',"+total+");";
         con.query(query, (err, res) => {
         if (err) throw err;           
         resolve(res.insertId);
@@ -225,7 +311,22 @@ proyectobd.insertarDetalleCompra = (idcompra,objeto) => {
     
     console.log("entro al detalle compra ",objeto);
     return new Promise((resolve, reject) => {
-        const query = "INSERT INTO detallecompra(compra,producto,cantidad) VALUES (" + idcompra + ","+ objeto.id +","+ objeto.cantidad+");";
+        const query = "INSERT INTO detallecompra(compra,producto,cantidad,subtotal) VALUES (" + idcompra + ","+ objeto.id +","+ objeto.cantidad+","+objeto.subtotal+");";
+        con.query(query, (err, res) => {
+        if (err) throw err;           
+        resolve(res.insertId);
+        });
+    });
+
+
+};
+proyectobd.insertarDetalleCompra2 = (idcompra,objeto) => {
+    
+  
+    
+    console.log("entro al detalle compra ",objeto);
+    return new Promise((resolve, reject) => {
+        const query = "INSERT INTO detallecompra(compra,producto,cantidad,subtotal) VALUES (" + idcompra + ","+ objeto.codproducto +", 1 ,"+objeto.precio_venta+");";
         con.query(query, (err, res) => {
         if (err) throw err;           
         resolve(res.insertId);
