@@ -34,8 +34,16 @@ app.get("/carrito", (req, res) => {
   res.render("carrito.html");
 });
 
+app.get("/favorito", (req, res) => {
+  res.render("favoritos.html");
+});
+
 app.get('/detalleProducto', (req, res) => {
   res.render("detalleProducto.html");
+});
+
+app.get('/moduloSubastas', (req, res) => {
+    res.render("subastas.html");
 });
 //STATIC FILES
 app.use(express.static(path.join(__dirname, "public")));
