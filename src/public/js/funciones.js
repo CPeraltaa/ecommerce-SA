@@ -670,6 +670,123 @@ function cargarCarrito(cliente) {
   return tabla;
 }
 
+
+function verListaFavoritos(data) {
+  //console.log("Funcion para cargar productos en pantalla...");
+  var datos = JSON.parse(data);
+  var productos;
+  var atributos = [];
+
+  console.log("Cantidad de Atributos: " + atributos.length);
+  for (let item of Object.keys(datos)) {
+    var atr = Object.values(datos[item]);
+    console.log("Item: " + atr);
+    atributos.push(atr);
+  }
+
+  //se crea la tabla y sus encabezados
+  var table = document.createElement("table");
+  var thead = document.createElement("thead");
+  var tbody = document.createElement("tbody");
+
+  var tabla =
+    "<table class='table'>" +
+    "<thead class='thead-dark'>" +
+    "<tr>" +
+    "<th>ID</th>" +
+    "<th>Id_Cliente</th>" +
+    "<th>Producto</th>" +
+    "<th>Cantidad</th>" +
+    "<th>Subtotal</th>" +
+    "<th>Acciones</th>" +
+    "</tr>" +
+    "</thead>" +
+    "<tbody>";
+
+  for (var i = 0; i < atributos.length; i++) {
+    var par = atributos[i];
+
+    var id = par[0];
+    var id_cliente = par[1];
+    var producto = par[2];
+    var cantidad = par[3];
+    var subtotal = par[4];
+
+    tabla +=
+      "<tr>" +
+      "<td>" +
+      par[0] +
+      "</td>" +
+      "<td>" +
+      par[1] +
+      "</td>" +
+      "<td>" +
+      par[2] +
+      "</td>" +
+      "<td>" +
+      par[3] +
+      "</td>" +
+      "<td>" +
+      par[4] +
+      "</td>" +
+      "<td><button type='button' class='btn btn-dark'><svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pencil' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/></svg></button>" +
+      "<button type='button' class='btn btn-danger' onclick='eliminarCarrito()'>" +
+      "<svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>" +
+      "<path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/>" +
+      "<path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/>" +
+      "</svg>" +
+      "</button>" +
+      "</td>" +
+      "</tr>";
+
+    console.log(
+      "id: " +
+        id +
+        "  id:cliente: " +
+        id_cliente +
+        "  producto: " +
+        producto +
+        "  cantidad:  " +
+        cantidad +
+        "  subtotal: " +
+        subtotal
+    );
+  }
+
+  tabla += "</tbody></table>";
+  console.log("Tabla construida con datos de carrito de compras...");
+  console.log(tabla);
+  return tabla;
+}
+
+function mostrarFavoritos(cliente) {
+  let tabla;
+
+  axios
+    .get("http://34.70.142.209/api/car/f/" + cliente)
+    .then((res) => {
+      // tabla = crearTablaDesdeJson(JSON.stringify(res.data));
+      // document.getElementById("detallecompra").appendChild(tabla);
+      //console.log(JSON.stringify(res.data.producto));
+
+      var respuesta = verProductosCarrito(JSON.stringify(res.data));
+      document.getElementById("detallecompra").innerHTML = respuesta;
+      /*var cc = [];
+
+      for (var i in res.data) {
+        cc.push(Number(res.data.rows[i].id));
+        console.log(res.data.rows[i].producto);
+      }
+      console.log("arregloooo" + cc["producto"]);*/
+    })
+    .catch(function (err) {
+      console.log("Error en llamada al microservisios");
+      console.log(err);
+      alert(err);
+    });
+  return tabla;
+}
+
 //*************************************************OBTENER PRODUCTOS DE LA TIENDA*********************************************** */
 function verProductosTienda(data) {
   console.log("Funcion para cargar productos en pantalla...");

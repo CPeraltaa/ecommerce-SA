@@ -34,6 +34,10 @@ app.get("/carrito", (req, res) => {
   res.render("carrito.html");
 });
 
+app.get("/favorito", (req, res) => {
+  res.render("favoritos.html");
+});
+
 app.get('/detalleProducto', (req, res) => {
   res.render("detalleProducto.html");
 });
