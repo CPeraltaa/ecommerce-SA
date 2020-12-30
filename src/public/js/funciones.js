@@ -43,9 +43,27 @@ boton.addEventListener("click", function () {
           if (res.status == 200) {
             console.log(JSON.stringify(cliente));
             alert("Credenciales Válidas: " + JSON.stringify(res.data));
+            console.log(JSON.stringify(res.data));
 
-            let url = "/cliente?id=" + "1";
-            $(location).attr("href", url);
+            var datos = JSON.parse(JSON.stringify(res.data));
+            console.log("Datos: "+ Object.values(datos));
+            var productos;
+            var atributos = [];
+            atributos = Object.values(datos);
+            var usuario = Object.values(datos);
+            console.log("usuario: " + usuario);
+            var idUsuario = usuario[0];//se obtiene el id del usuario registrado
+            var tipoUsuario = usuario[1]; //se obtiene el tipo de usuario que puede ser 01:cliente || 00:proveedor
+
+            if (tipoUsuario == "01"){
+              console.log("ID Usuario: "+idUsuario + "  tipo: Cliente");
+              let url = "/cliente?id=" + idUsuario;
+              $(location).attr("href", url);
+            }else{
+              console.log("ID Usuario: "+idUsuario + "  tipo: Proveedor");
+              let url = "/proveedor?id=" + idUsuario;
+              $(location).attr("href", url);
+            }
           } else {
             alert("Credenciales inválidas");
           }
@@ -266,6 +284,51 @@ botonCargarProductos.addEventListener("click", function () {
   var URL = "http://34.68.127.94/" + user;
   axios
     .get(URL, JSON.stringify(listaProductos))
+    .then((res) => {
+      console.log(stringify("Entro a verificar dentorde la twew"));
+
+      if (res.status == 200) {
+        console.log(JSON.stringify(res.data));
+        alert("Búsqueda Realizada: " + JSON.stringify(res.data));
+      } else {
+        alert("No se encontraron productos");
+      }
+      console.log(res);
+    })
+    .catch(function (err) {
+      console.log(err);
+      alert(err);
+    });
+});
+
+var botonAgregarProductosSubasta = document.getElementById("btnAgregarProductoSubasta");
+
+botonAgregarProductosSubasta.addEventListener("click", function () {
+  alert("entro a la funcion agregar producto desde subasta.");
+  re = /^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+  //aqui se debe crear la lógica para consumir el webservice de login
+  var user = "4";
+
+  var producto = {
+    nombre: "",
+    cat_codcategoria: "",
+    stock: "",
+    precio: "",
+    precio_venta: "",
+    codproveedor: ""
+  }
+
+  var listaProductos = {
+    id: 1,
+    id_cliente: 0,
+    producto: "empty",
+    cantidad: "1",
+    subtotal: "1",
+  };
+  console.log(stringify(producto));
+  var URL = "http://34.68.127.94/insertarProducto";
+  axios
+    .get(URL, JSON.stringify(producto))
     .then((res) => {
       console.log(stringify("Entro a verificar dentorde la twew"));
 
@@ -809,4 +872,34 @@ function crearCasillaProducto(
   p2.appendChild(btnAgregar);
 
   contenedor.appendChild(div);
+}
+
+//*******************FUNCION PARA OBTENER LOS PARÀMETROS DE LA URL************************ */
+function getUrlParameter(parametro) {
+ var sPageUrl = decodeURIComponent(window.location.search.substring(1)),
+     sUrlVariables = sPageUrl.split('&'), 
+     sParameterName, 
+     i;
+  for(i = 0; i < sUrlVariables.length; i++){
+    sParameterName = sUrlVariables[i].split('=');
+    if (sParameterName[0] == parametro){
+      if (sParameterName[1] == undefined){
+        return "0";
+      }else{
+        return sParameterName[1];
+      }
+    }
+  }
+};
+
+
+function cargaIdUSuario(){
+  var idUsuario = getUrlParameter("id");
+  if (idUsuario === undefined ){
+    alert("No se encontró el id de usuario");
+  }else{
+    alert("Bienvenido usuario id: " + idUsuario);
+    document.getElementById("spanIdUsuario").innerText = idUsuario;
+  }
+  console.log("Usuario obtenido: " + idUsuario);
 }
